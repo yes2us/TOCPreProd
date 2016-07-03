@@ -23,8 +23,8 @@
 			Finshed:"Finshed"
 		};
 
+		homestr = document.location.href.substr(0,document.location.href.replace("http://",'').indexOf("/",document.location.href.replace("http://",'').indexOf("/",1)+1)+7);
 	    urlstr = "http://"+window.location.host+"/TOCPreProdAdmin/index.php/Home";
-		homestr = "http://"+window.location.host+"/TOCPreProd";
 		localhost = "http://"+window.location.host;
 		
 		webix.ajax().post(urlstr+"/WBUserMng/getMyCWH",{UserCode:''}).then(function(response){

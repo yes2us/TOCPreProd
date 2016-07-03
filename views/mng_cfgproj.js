@@ -23,7 +23,7 @@ function(resourceobject,projectobject){
           
            var accnetprocetime=0,accbuffertime=0;
            var pnprevnodecode = null;
-       
+       	   var nodeorder=0;
  		 while(curNode)
  		 {
  		 	accnetprocetime +=  parseInt(curNode.pnnetproctime);
@@ -35,7 +35,7 @@ function(resourceobject,projectobject){
  		 		nodename:curNode.nodename,
  		 		nodeleadercode:curNode.pnnodeleadercode,
  		 		nodeleadername:curNode.pnnodeleadername,
- 		 		
+ 		 		nodeorder:nodeorder++,
  		 		nodestate:Enum.NotStart,
  		 		startcondition:curNode.startcondition,
  		 		
@@ -324,7 +324,7 @@ var grid_pathnode ={
 		columns:[
 						{id:"deletebutton", header:"&nbsp;",hidden:false, width:35, template:"<span  style='color:#777777; cursor:pointer;' class='webix_icon fa-trash-o'></span>"},
 						{id:"_identify",header:"",width:30,hidden:true},
-					    	{id:"projectbufferstate",header:"缓冲状态",width:60,sort:"float"},	
+					    	{id:"bufferstate",header:"缓冲状态",width:60,sort:"float"},	
 					    	{id:"projecttype",header:"类型",width:60},	
 					    {id:"projectcode",header:"项目编号",width:100},
 					    
@@ -383,6 +383,7 @@ var grid_pathnode ={
 		  {rows:[tree_node,
 		  	{ view: "button", type: "iconButton", icon: "flash",css:"{text-align:right;}",id:"button", label: "生成项目", 
 							click: function(){
+								
 								$$("dt_project101").eachRow(function(rowid){
 									var row = $$("dt_project101").getItem(rowid);
 									var prjNObj = CreateProjectNode(row);
@@ -390,6 +391,15 @@ var grid_pathnode ={
 										$$("dt_projectnode101").add(prjNObj[i]);
 									}
 								});
+								
+								//等数据写入数据库中
+								setTimeout(function(){
+								$$("dt_project101").eachRow(function(rowid){
+									var row = $$("dt_project101").getItem(rowid);
+									projectobject.updateProjBufferState(row.projectcode);
+								});
+								},1000);
+								
 							}}]},
 		  {view:"resizer",width:1},
 		  {

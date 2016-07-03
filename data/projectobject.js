@@ -23,5 +23,13 @@ define([], function() {
 		 postData.UserCode=_UserCode;
 		 return webix.ajax().post(urlstr+"/WBProjectMng/getNodeRGBStatcs",postData);    	    
     }
+   
+   	obj.updateProjBufferState = function(projectcode){
+		 return webix.ajax().post(urlstr+"/WBProjectMng/updateProjBufferState",{UserCode:_UserCode,ProjectCode:projectcode});    	    
+    }	
+    
+    obj.updateProjectPath=function(projectcode){
+		return  webix.ajax().post(urlstr+"/WBProjectMng/updateProjectPath",{UserCode:_UserCode,ProjectCode:projectcode});    	    
+    }
 	return obj;
 });

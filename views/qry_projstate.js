@@ -37,7 +37,7 @@ function(projectobject){
 					columns:[
 						{id:"deletebutton", header:"&nbsp;",hidden:false, width:35, template:"<span  style='color:#777777; cursor:pointer;' class='webix_icon fa-trash-o'></span>"},
 						{id:"_identify",header:"",width:30,hidden:true},
-					    	{id:"projectbufferstate",header:"缓冲状态",width:60,sort:"float"},	
+					    	{id:"bufferstate",header:"缓冲状态",width:60,sort:"float"},	
 					    	{id:"projectenabled",header:"有效状态",width:60,template:"{common.checkbox()}"},
 					    	
 					    	{id:"projecttype",header:["类型",{content:"selectFilter"}],width:60},	

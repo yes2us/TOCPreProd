@@ -4,9 +4,36 @@
 路径：由节点组成，是项目的模块。用于快速生成项目。生产项目可以不使用路径，直接从节点生成
 任务对象：是节点的处理对象，如销售订单，生产订单，文件，方案等
 项目：节点+任务对象+开始和结束时间+资源
+-------------------------------------------
+几种行为
+1.结构性更新  创建ProjectNode时实现了，没有实现修改
+1.1用户更新项目Path结构即（HeadNodeCode,TailNodeCode,PrevNodeCode,NextNodeCode,NetProcTime,BufferTime）时，
+更新bprojectnode:AccBufferTime,AccNetProcTime,
+NodeTensePlanStartDate,NodeTensePlanFinishDate，
+进而更新bproject:BufferState.
+触发方式：用户更新项目的bprojectname表时
 
-TensePlanStartDate:TPSDate;
-TensePlanFinishDate:TPFDate;
-UserPlanFinishDate: UPFDate;
-UserActuralStartDate:UASDate
-UserActuralFinishDate:UAFDate
+1.2用户更新bproject表中的BufferType，TOCDueDate，InitDueDate时，
+进而更新bprojectnode:NodeTensePlanStartDate,NodeTensePlanFinishDate，
+进而更新bproject:BufferState.
+触发方式：用户更新bproject表时
+
+2.自动更新 已实现
+凌晨时，当NodeUserPlanFinishDate小于当前日期时，
+更新bprojectnode:NodeUserPlanFinishDate=curDate(),
+进而更新bproject:BufferState.
+触发方式：系统更新bprojectnode表时
+
+3.用户每日更新  已实现
+3.1用户手工更新一个节点的NodeState时，
+其后续节点可能启动，进而更新bproject:BufferState.
+触发方式：用户更新bprojectnode表时
+
+3.2用户更新NodeUserPlanFinishDate时， 已实现
+进而更新bproject:BufferState.
+触发方式：用户更新bprojectnode表时
+
+BufferState的计算方式，
+当项目未启动时，BufferState=0
+当项目在进行中时，找到第一个未完成的节点，BufferState=（用户计划完工时间-压力完工时间）/累计缓冲
+当项目完成时，BufferState不变

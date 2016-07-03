@@ -9,6 +9,8 @@ function(projectobject){
 		    	var postData = row;
 		    	postData.webix_operation='update';  	
     	  	 	webix.ajax().post(urlstr+"/WBCURDMng/saveProjectNode",postData);
+    	  	 	
+    	  	 	projectobject.updateProjBufferState(row.projectcode);
 	}
 	
     function setNodeState(nodestate){
