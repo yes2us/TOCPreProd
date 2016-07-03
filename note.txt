@@ -4,3 +4,9 @@
 路径：由节点组成，是项目的模块。用于快速生成项目。生产项目可以不使用路径，直接从节点生成
 任务对象：是节点的处理对象，如销售订单，生产订单，文件，方案等
 项目：节点+任务对象+开始和结束时间+资源
+
+TensePlanStartDate:TPSDate;
+TensePlanFinishDate:TPFDate;
+UserPlanFinishDate: UPFDate;
+UserActuralStartDate:UASDate
+UserActuralFinishDate:UAFDate

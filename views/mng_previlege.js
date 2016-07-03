@@ -48,26 +48,20 @@ function(roleobject){
 							var selRow = this.getSelectedItem();
 							if(!selRow)	return;
 							$$("tree_module").define('disabled',false);
-							$$("tree_org").define('disabled',false);
+
 							
 							selrolecode = selRow.rolecode;
 							
 							$$("tree_module").clearAll();
-							$$("tree_org").clearAll();
 							
 							webix.ajax().post(urlstr+"/WBModuleMng/getModuleTree").then(function(response1){
 								$$("tree_module").parse(response1.json());
 								
-								return webix.ajax().post(urlstr+"/WBPartyMng/getOrgTree");
-							}).then(function(response2){
-								$$("tree_org").parse(response2.json());
-								$$("tree_org").closeAll();
-								
 								return roleobject.getRolePrevilege(selrolecode);
-							}).then(function(response3){
-								if(!response3) return;
+							}).then(function(response2){
+								if(!response2) return;
 								
-								var response = response3.json();
+								var response = response2.json();
 								$$("dt_roleprevilege").clearAll();
 								$$("dt_roleprevilege").parse(response);
 									
@@ -76,8 +70,6 @@ function(roleobject){
 										if(item.resourcetype && item.resourcetype==='Module' && $$("tree_module").exists(item.resourcecode)) 
 										$$("tree_module").checkItem(item.resourcecode);
 										
-										if(item.resourcetype && item.resourcetype.indexOf('Org')>=0)  
-										$$("tree_org").checkItem(item.resourcecode);
 									});
 									
 							});
@@ -149,64 +141,6 @@ var grid_module={
 			]
 };
 
-var grid_org={
-	maxWidth:200,
-	rows:[
-		    		{
-							view: "toolbar",
-							css: "highlighted_header header4",
-							paddingX:5,
-							paddingY:5,
-							height:35,
-							cols:[
-								{  view: "label",label:"组织列表"}
-							]
-				},
-				
-				{
-					view:"tree",
-					id:"tree_org",
-					template:"{common.icon()} {common.checkbox()} {common.folder()} #value#",
-					threeState: false,
-					disabled:true,
-					url:urlstr+"/WBPartyMng/getOrgTree",
-					on:{
-						onItemCheck:function(id){
-
-							if(!selrolecode)  return;
-									
-							var isChecked = $$("tree_org").isChecked(id);						
-							if(!isChecked){
-								var arr = $$("dt_roleprevilege").find(function(row){
-										return row.resourcecode == id;
-									});
-									
-									if(arr.length) $$("dt_roleprevilege").remove(arr[0].id);
-								return;
-							}
-													
-							var selNode = $$("tree_org").getItem(id);
-
-							var arr = $$("dt_roleprevilege").find(function(row){
-										return row.resourcecode == selNode.id;
-							});
-									
-							if(!arr.length)
-								$$("dt_roleprevilege").add({
-										rolecode:selrolecode,
-										resourcecode:selNode.id,
-										resourcename:selNode.value,
-										resourcetype:selNode.level
-							});
-
-
-						},
-					}
-				}
-
-			]
-};
-
 
 var grid_rolepreviledge ={
 		 view:"datatable",
@@ -248,9 +182,7 @@ var grid_rolepreviledge ={
 			cols:[{ view: "label",label:"权限列表"}]
 		},
 			grid_rolepreviledge]
-		},
-		{view:"resizer"},
-		grid_org]
+		}]
 
 	};
 

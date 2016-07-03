@@ -97,7 +97,7 @@
 									function(response) {			
 										webix.message('登陆成功');
 					   					webix.storage.local.put('UserObject',response.text()); 
-					   					window.location.href= homestr+"/index.html#!/app/mng_storets";
+					   					window.location.href= homestr+"/index.html#!/app/qry_projstate";
 									});
  								
 							} else {
@@ -108,14 +108,7 @@
 				}
 			});
   		}
-  		
-  		  function loadWBMenu(_UserCode)
-  		  {
-  //		  	 var premizObj = webix.ajax().post(urlstr+"/WBParaMng/getWBMenu",{DSSuffix:_DSSuffix,UserCode:_UserCode});
-//		  	  $$("app:menu").clearAll();
-//			  $$("app:menu").parse(premizObj);
-  		  }
-  		  
+
 
 			
 			

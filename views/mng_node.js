@@ -40,7 +40,6 @@ function(resourceobject,modaladd){
 			{},
 			{ view: "button",id:"bn_EditNode", type: "iconButton", icon: "pencil-square-o", label: "编辑", width: 80,
 			click:function(){
-				$$('deletebutton').show();	
 				$$('bn_AddNode').show();
 				$$('bn_AddNode').refresh();	
 				
@@ -86,7 +85,7 @@ function(resourceobject,modaladd){
 					{id:"isnodestatcs", header:"是否统计", template:"{common.checkbox()}", sort:"string",width:85},
 					{id:"statcsway", header:"统计方式", editor:"select",
 					options:[{id:"Total",value:"统计总量"},{id:"Detail",value:"统计明细"}],width:85,css:'bgcolor1'},
-					{id:"statcscondition", header:"统计条件", editor:"select",
+					{id:"startcondition", header:"启动条件", editor:"select",
 					options:[{id:"PNS",value:"前节点启动"},{id:"PNF",value:"前节点完成"}],width:100,css:'bgcolor1'},
 					{id:"nodedesc", header:"节点描述", editor:"text", sort:"string",width:120,css:'bgcolor1'},
 					

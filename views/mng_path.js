@@ -90,7 +90,7 @@ function(resourceobject){
 					save:urlstr+"/WBCURDMng/savePath",
 					columns:[
 						{id:"deletebutton", header:"&nbsp;",hidden:false, width:35, template:"<span  style='color:#777777; cursor:pointer;' class='webix_icon fa-trash-o'></span>"},
-						{id:"pathenabled", header:"启用", template:"{common.checkbox()}", sort:"string",fillspace:1,enabled:false},
+						{id:"pathenabled", header:"启用", template:"{common.checkbox()}", sort:"string",fillspace:0.5,enabled:false},
 						{id:"pathcode", header:"路径编号", sort:"string",fillspace:1},
 						{id:"pathname", header:"路径名称", sort:"string",fillspace:1},
 						{id:"buffertype", header:"缓冲类型", editor:"combo", sort:"string",fillspace:1,collection:["HTT","RedLine","SDBR","DBR"],css:'bgcolor1'},
@@ -198,9 +198,7 @@ var grid_pathnode ={
 					    	{id:"pnnodeleadercode",header:"责任人",width:85,editor:"richselect", popup:popup2,css:'bgcolor1'},
 					    	
 					    	{id:"pnnetproctime",header:"净处理时间",width:85,editor:"text"},
-					    	{id:"pnaccnetproctime",header:"累计净处理时间",width:85,editor:"text"},
 					    	{id:"pnbuffertime",header:"缓冲时间",width:85,editor:"text"},
-					    	{id:"pnaccbuffertime",header:"累计缓冲时间",width:85,editor:"text"},
 					    	{id:"pnstateupdatefreq",header:"更新间隔",width:85,editor:"text"},
 
 	 	],
@@ -293,7 +291,7 @@ var grid_pathnode ={
 		    		if((editor.column==="pnnextnodecode" ) && state.value != state.old){   		
 		         drawPath("chartid120","dt_path","dt_pathnode",7);
 		    }  
-		});
+			});
 		}
 	};
 

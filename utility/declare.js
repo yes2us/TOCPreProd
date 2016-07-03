@@ -17,6 +17,11 @@
 		var _SizeGroupName;
 		var _NodeType;
 		
+		var Enum = {
+			InProcess:"InProcess",
+			NotStart:"NotStart",
+			Finshed:"Finshed"
+		};
 
 	    urlstr = "http://"+window.location.host+"/TOCPreProdAdmin/index.php/Home";
 		homestr = "http://"+window.location.host+"/TOCPreProd";

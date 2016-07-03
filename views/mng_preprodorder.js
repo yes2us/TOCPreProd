@@ -63,7 +63,7 @@ function(orderobject){
 				columns:[
 					{ id:"_identify",header:"#", hidden:true},
 					{ id:"rownum",header:"序号",sort:"int",width:60},
-					{ id:"ordercode",header:"订单编号",sort:"int",width:150},
+					{ id:"ordercode",header:"订单编号",sort:"int",width:100},
 					{ id:"skccode",header:"款色", sort:"string",width:150},
 					{ id:"stylecode",header:"款式", sort:"string",width:100},
 					{ id:"colorname",header:"颜色", sort:"string",width:60},
@@ -108,7 +108,7 @@ function(orderobject){
 			var columnCfg = [
 					{ id:"_identify",header:"#", hidden:true},
 					{ id:"rownum",header:"序号",sort:"int",width:60},
-					{ id:"ordercode",header:"订单编号",sort:"int",width:150},
+					{ id:"ordercode",header:"订单编号",sort:"int",width:100},
 					{ id:"skccode",header:"款色", sort:"string",width:150},
 					{ id:"stylecode",header:"款式", sort:"string",width:100},
 					{ id:"colorname",header:"颜色", sort:"string",width:60},

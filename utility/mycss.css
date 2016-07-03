@@ -53,3 +53,11 @@
 .header_person .webix_icon{
 	line-height: inherit;
 }
+		.checked{
+			color:green;
+			font-weight: bold; cursor:pointer;
+		}
+		.notchecked{
+			color:red;
+			font-weight:bold; cursor: pointer;
+		}

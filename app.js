@@ -37,7 +37,7 @@ define([
 		version:	"0.1",
 		debug:		true,
 //		debug:		false,
-		start:		"/app/mng_storets"		
+		start:		"/app/qry_projstate"		
 	});
 
 	app.use(menu);
