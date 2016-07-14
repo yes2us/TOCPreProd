@@ -68,11 +68,6 @@
   		
   		function checkUser(_UserCode,_PWD)
   		{
-  			webix.ajax().post(urlstr+"/WBUserMng/getRawUrl", {},
-  			function(text, xml,xhr) {
-  							
-				if (text) {
-
 					webix.ajax().post(urlstr + "/WBUserMng/checkUserPWD", {UserCode: _UserCode,PWD: _PWD},
 						function(text1, xml1,xhr1) {
 							if (text1.indexOf("OK")>0) {
@@ -105,8 +100,6 @@
 							}
 						});
 
-				}
-			});
   		}
 
 

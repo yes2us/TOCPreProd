@@ -1,7 +1,8 @@
 define([
 	"data/resourceobject",
+	"views/modules/modaladd/addpath"
 	],
-function(resourceobject){
+function(resourceobject,addpath){
 	
 	checkauthorization(false);
 	
@@ -67,7 +68,9 @@ function(resourceobject){
 								$$("dt_path").parse(resourceobject.getPathList());
 									}},
 							{  view: "label",label:"管理路径"},
-//							{},
+							{},
+							{ view: "button", type: "iconButton", icon: "plus",id:"addbutton", label: "增加",hidden:false, width: 80, 
+							click: function(){this.$scope.ui(addpath.$ui).show();}},
 							{ view: "button", type: "iconButton", icon: "save",id:"button", label: "保存", width: 80, 
 							click: function(){
 								webix.message("保存成功！");

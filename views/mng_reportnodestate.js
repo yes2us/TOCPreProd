@@ -8,6 +8,7 @@ function(projectobject){
 	function updateNode(row){
 		    	var postData = row;
 		    	postData.webix_operation='update';  	
+		    	postData.UserCode = _UserCode;
     	  	 	webix.ajax().post(urlstr+"/WBCURDMng/saveProjectNode",postData);
     	  	 	
     	  	 	projectobject.updateProjBufferState(row.projectcode);
@@ -152,11 +153,11 @@ function(projectobject){
 			$$("dt_reportnodestate").define("editable",checkWriteAuth());
 			
 			$$("dt_reportnodestate").attachEvent("onAfterEditStop", function(state, editor, ignoreUpdate){
-		    		if((editor.column==="nodeuserplanfinishdate" ) && state.value != state.old){   		
+		    		if((editor.column==="nodeuserplanfinishdate" ) && state.value != state.old)		
 		        {
 		        		updateNode($$("dt_reportnodestate").getItem(editor.row));
 		        }
-		    }  
+		    
 			});
 		
 		}

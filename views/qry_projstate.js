@@ -39,11 +39,12 @@ function(projectobject){
 						{id:"_identify",header:"",width:30,hidden:true},
 					    	{id:"bufferstate",header:"缓冲状态",width:60,sort:"float"},	
 					    	{id:"projectenabled",header:"有效状态",width:60,template:"{common.checkbox()}"},
+					    {id:"createpathname",header:["路径",{content:"selectFilter"}],width:100},
 					    	
-					    	{id:"projecttype",header:["类型",{content:"selectFilter"}],width:60},	
-					    {id:"projectcode",header:"项目编号",width:100},
-					    	{id:"taskobjectcode",header:["订单号",{content:"textFilter"}],width:100},
-					    	{id:"skccode",header:["款色",{content:"textFilter"}],width:150},
+//					    	{id:"projecttype",header:["类型",{content:"selectFilter"}],width:60},	
+					    {id:"projectcode",header:["项目编号",{content:"textFilter"}],width:100},
+//					    	{id:"taskobjectcode",header:["订单号",{content:"textFilter"}],width:100},
+					    	{id:"skccode",header:["任务内容",{content:"textFilter"}],width:150},
 					    	{id:"orderqty",header:"订单数量",width:85},
 					    
 					    	{id:"initduedate",header:"交付日期",width:90,editor:"date",css:'bgcolor1'},

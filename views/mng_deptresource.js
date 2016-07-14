@@ -150,7 +150,15 @@ var grid_deptresource ={
 //									$$('toolbar2').config.css="highlighted_header header4";
 //									$$('toolbar2').reconstruct();
 								}},
-								{ view: "button", type: "iconButton", icon: "plus",id:"addbutton2", label: "增加",hidden:false, width: 80, click: function(){this.$scope.ui(modaladd.$ui).show();}},
+								{ view: "button", type: "iconButton", icon: "plus",id:"addbutton2", label: "增加",hidden:false, width: 80, 
+								click: function(){
+									var selDeptRow = $$("dt_Dept").getSelectedItem();
+									if(selDeptRow){
+										$$('dt_DeptResource').add({
+										deptcode:selDeptRow.deptcode
+									});
+									}
+								}},
 								
 							]
 			};
